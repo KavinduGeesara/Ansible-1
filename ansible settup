@@ -1,0 +1,15 @@
+create ec2-key.pem and inventory.txt files
+
+ansible  ansible-target-1 -m ping -i inventory.txt
+
+ssh-agent bash
+
+cp ec2-key.pem ~/.ssh/
+
+ssh-add ~/.ssh/ec2-key.pem
+
+export ANSIBLE_HOST_KEY_CHECKING=False   or  vi /etc/ansible/ansible.cfg and desable host key  
+
+ansible  servers -m ping -i inventory.txt
+
+ansible  servers install-nginx.yml -v
